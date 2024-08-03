@@ -63,7 +63,7 @@ def tataplay_playlist():
         hdntl = hmac[0]["data"]["hdntl"]
 
         # Build M3U playlist
-        m3u_playlist = [f'#EXTM3U x-tvg-url="{CONFIG["epg_url"]}"\n']
+        m3u_playlist = [f'#EXTM3U x-tvg-url="{CONFIG["epg_url"]}"\n\n']
 
         for channel in channels["data"]:
             tvg_id, group_title, tvg_logo, title, mpd = (
@@ -84,7 +84,7 @@ def tataplay_playlist():
                 f'#KODIPROP:inputstream.adaptive.license_key={license_key}\n'
                 f'#EXTVLCOPT:http-user-agent={user_agent}\n'
                 f'#EXTHTTP:{{"cookie":"{hdntl}"}}\n'
-                f'{mpd}|cookie:{hdntl}\n'
+                f'{mpd}|cookie:{hdntl}\n\n'
             )
 
         return Response(''.join(m3u_playlist), content_type='text/plain')
