@@ -73,7 +73,7 @@ def tataplay_playlist():
             license_key = ''
             try:
                 license_key = (
-                    f'{{"keys":[{{"kty":"oct","k":{hex_to_base64(channel["licence2"])},"kid":{hex_to_base64(channel["licence1"])}}}],"type":"temporary"}}'
+                    f'{{"keys":[{{"kty":"oct","k":"{hex_to_base64(channel["licence2"])}","kid":"{hex_to_base64(channel["licence1"])}"}}],"type":"temporary"}}'
                 )
             except Exception as e:
                 logger.error(f"Error processing license key for channel {tvg_id}: {e}")
